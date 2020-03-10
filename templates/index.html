@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+	<div class="container mt-4">
+		<div class="row">
+			<div class="row col-md-9">
+				<h1 style="text-align:center;" class="mb-4">Paramètres environnementaux de la baie</h1>
+				<table id="datas" class="table table-striped">
+					<tr>
+						<!--<th>#</th>-->
+						<th>Pression (mbar)</th>
+						<th>Temperature (°C)</th>
+						<th>Humidity (%)</th>
+						<th>Datetime</th>
+					</tr>
+
+
+					{% set tableSize = datas|length %}
+					{% for i in range(0, tableSize) %}
+					<tr>
+						<!--<td> {{ datas[i]['ID'] }}</td>-->
+						<td> {{ datas[i]['Pression'] }}
+							{%if (datas[i]['Pression'] < 1030) %}
+							<span class="badge badge-danger">critical</span></td>
+						{%else%}
+						<span class="badge badge-success">no problem</span></td>
+						{%endif%}
+						<td> {{ datas[i]['Temperature'] }}
+							{%if (datas[i]['Temperature'] > 25) or (datas[i]['Temperature'] < 15) %}
+							<span class="badge badge-danger">critical</span></td>
+						{%else%}
+						<span class="badge badge-success">no problem</span></td>
+						{%endif%}
+						<td> {{ datas[i]['Humidity'] }}
+							{%if (datas[i]['Humidity'] < 60) or (datas[i]['Humidity'] > 30) %}
+							<span class="badge badge-success">no problem</span></td>
+						{%else%}
+						<span class="badge badge-danger">critical</span></td>
+						{%endif%}
+						</td>
+						<td> {{ datas[i]['Timestamp'] }}</td>
+					</tr>
+					{%endfor%}
+				</table>
+			</div>
+
+
+			<div class="col-md-3 mt-3">
+				<h3 class="mb-5">Dernières mesures</h3>
+
+				<div class="wrapper">
+					<div class="box">
+						<div id="g1" class="gauge"></div>
+
+						<div id="g2" class="gauge"></div>
+
+						<div id="g3" class="gauge"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>-->
+<script src="../static/raphael-2.1.4.min.js"></script>
+<script src="../static/justgage.js"></script>
+
+
+<script>
+
+	var g1, g2, g3;
+	document.addEventListener("DOMContentLoaded", function(event) {
+	  g1 = new JustGage({
+		id: "g1",
+		value: {{ datas[0]['Temperature'] }},
+		valueFontColor: "black",
+		pointer: true,
+		gaugeWidthScale: 0.6,
+		customSectors: [{
+			color: '#ff0000',
+			lo: 50,
+			hi: 100
+		}, {
+			color: '#00ff00',
+			lo: 0,
+			hi: 50
+		}],
+		min: -20,
+		max: 100,
+		title: "Temperature",
+		label: "Celcius",
+	});
+	    g2 = new JustGage({
+		id: "g2",
+		value: {{ datas[0]['Humidity'] }},
+		valueFontColor: "black",
+		min: 0,
+		max: 100,
+		title: "Humidity",
+		label: "%"
+	});
+		g3 = new JustGage({
+		id: "g3",
+		value: {{ datas[0]['Pression'] }},
+		valueFontColor: "black",
+		pointer: true,
+		gaugeWidthScale: 0.6,
+		customSectors: [{
+		color: '#ff0000',
+		lo: 50,
+		hi: 100
+		}, {
+		color: '#00ff00',
+		lo: 0,
+		hi: 50
+		}],
+		min: 1000,
+		max: 1500,
+		title: "Pression",
+		label: "mbar",
+	});
+});
+    </script>
+
+</body>
+{% endblock %}
