@@ -68,7 +68,9 @@ Dans le fichier HTML afficher les données de cette manière
 <embed type="image/svg+xml" src={{temp|safe}} style='max-width:1000px; border-radius: 10px; background-color: lavender'/>	
 ```
 
+<img src="data_temp.png" align="center" width="700px"/>
 
+<br>
 
 
 **3)	Installer et configurer une solution avec MQTT permettant de transmettre les paramètres environnementaux à un serveur de base de données (MariaDB / MySQL). Cette solution devra être mise en place sur le Raspberry PI. La communication dans les deux sens devra être possible.**
