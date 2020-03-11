@@ -54,7 +54,7 @@ def main():
     emailSubjectHumidity = "Humidity is too high!"
 
     while True:
-        db = "/home/pi/Documents/Poseidon/Poseidon.db"
+        db = "/home/pi/Poseidon/Poseidon.db"
         conn = create_connection(db)
 
         pression = get_pression()
