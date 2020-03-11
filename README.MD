@@ -1,4 +1,4 @@
-<img src="Poseidon.png" align="left" width="150px"/>
+<img src="Poseidon.png" align="left" width="120px"/>
 <img align="left" width="0" height="192px" hspace="10"/>
 
 > # **POSEIDON - RASPBERRY PI**
@@ -10,6 +10,9 @@ Gestion des paramètres environnementaux (Température, Pression de l'air, Humid
 <br>
 
 <hr>
+
+
+> ## **Technologies utilisées**
 
 - Python 3
   - Flask
