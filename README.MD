@@ -75,7 +75,7 @@ Dans le fichier HTML afficher les données de cette manière
 
 **3)	Installer et configurer une solution avec MQTT permettant de transmettre les paramètres environnementaux à un serveur de base de données (MariaDB / MySQL). Cette solution devra être mise en place sur le Raspberry PI. La communication dans les deux sens devra être possible.**
 
-Pour mettre en place MQTT 
+Pour mettre en place MQTT :
 ```
 $ >     sudo apt-get install mosquitto mosquitto-clients  
 ```
