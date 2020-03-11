@@ -1,10 +1,15 @@
-<h1 align="center">POSEIDON - RASPBERRY PI</h1>
+<img src="Poseidon.png" align="left" width="150px"/>
+<img align="left" width="0" height="192px" hspace="10"/>
 
-<p align="center">
- <img src="Poseidon.png" align="center"/>
-</p>
+> # **POSEIDON - RASPBERRY PI**
+
 
 Gestion des paramètres environnementaux (Température, Pression de l'air, Humidité) d'une salle serveur, avec interface et système de notification par email, ainsi que sauvegarde sur base de données distante via MQTT.
+
+
+<br>
+
+<hr>
 
 - Python 3
   - Flask
@@ -12,6 +17,7 @@ Gestion des paramètres environnementaux (Température, Pression de l'air, Humid
   - Pygal
   - Logging.handlers
 - Sqlite 3
+- Observium
 - HTML/CSS
 - MQTT
 - Bash
