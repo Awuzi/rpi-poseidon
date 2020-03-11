@@ -20,7 +20,11 @@ Gestion des paramètres environnementaux (Température, Pression de l'air, Humid
 - MQTT
 - Bash
 
+## **Installation et utilisation**
 
+Pour installer la solution Poseidon, clonez le projet dans le dossier /home/pi. 
+Une fois le clonage effectué, ouvrez un terminal dans ce dossier et tapez la commande ./run.sh pour démarrer la solution.
+Le fichier run.sh lance la capture et le stockage des données dans la base de données et le serveur web de l'interface d'affichage des données.
 
 
 
