@@ -67,17 +67,39 @@ Dans le fichier HTML afficher les données de cette manière
 ```html
 <embed type="image/svg+xml" src={{temp|safe}} style='max-width:1000px; border-radius: 10px; background-color: lavender'/>	
 ```
-
+<p align="center">
 <img src="data_temp.png" align="center" width="700px"/>
-
+</p>
 <br>
 
 
 **3)	Installer et configurer une solution avec MQTT permettant de transmettre les paramètres environnementaux à un serveur de base de données (MariaDB / MySQL). Cette solution devra être mise en place sur le Raspberry PI. La communication dans les deux sens devra être possible.**
 
+Pour mettre en place MQTT 
+```
+$ >     sudo apt-get install mosquitto mosquitto-clients  
+```
+Pour tester le fonctionnement de MQTT, installer une seconde machine virutelle (Debian de préférence) et y installer aussi MQTT.
+Une fois l'installation de MQTT réalisée sur les deux machines, tester les commandes suivantes:
+
+Sur le **RASPBERRY** (publisher):
+```
+$ >     mosquitto_pub -h IP.DE.LA.DEBIAN -t "poseidon/data" -m "message de test"
+```
+
+L'options -t permet de definir le domaine d'écoute au subcriber 
+
+Sur la **DEBIAN** (subscriber):
+```
+$ >     mosquitto_sub -h localhost -t "poseidon/data" -v
+```
+
+Le subscriber quant à lui va attendre une information ayant pour domaine/sujet "poseidon/data"
+
 
 
 **4)	Proposer une solution permettant d’afficher cette historique sous forme de courbes.**
 
+Work in progress...
 
 https://puu.sh/FjxxG/460cc109ad.png
