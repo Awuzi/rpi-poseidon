@@ -6,7 +6,7 @@ import sqlite3
 import pygal
 
 app = Flask(__name__)
-DATABASE = "/home/pi/Documents/Poseidon/Poseidon.db"
+DATABASE = "/home/pi/Poseidon/Poseidon.db"
 
 
 def connect_db():
@@ -34,7 +34,6 @@ def get_datas_by_name(name):
     i = 0
     for row in datas:
         tab.append(row[str(name)])
-
     return tab
 
 
@@ -46,13 +45,19 @@ def get_data_full():
     return datas
 
 
-@app.route('/pygalexample/')
-def pygalexample():
+@app.route('/temperature/')
+def tempGraph():
     temp = pygal.Line()
     temp.title = 'Temperatures of the Server Room'
     temp.x_labels = get_datas_by_name('Timestamp')
     temp.add('Temperature', get_datas_by_name('Temperature'))
     temp_data = temp.render_data_uri()
+
+    return render_template("graphingTemp.html", temp=temp_data)
+
+
+@app.route('/pression/')
+def pressureGraph():
 
     pressure = pygal.StackedLine(fill=True)
     pressure.title = 'Pressure of the Server Room'
@@ -60,13 +65,19 @@ def pygalexample():
     pressure.add('Air Pressure', get_datas_by_name('Pression'))
     pressure_data = pressure.render_data_uri()
 
+    return render_template("graphingPressure.html", pressure=pressure_data)
+
+
+@app.route('/humidite/')
+def humidityGraph():
+
     humidity = pygal.Line()
     humidity.title = 'Humidity of the Server Room'
     humidity.x_labels = get_datas_by_name('Timestamp')
     humidity.add('Humidity', get_datas_by_name('Humidity'))
     humidity_data = humidity.render_data_uri()
-
-    return render_template("graphing.html", temp=temp_data, pressure=pressure_data, humidity=humidity_data)
+    
+    return render_template("graphingHumid.html", humidity=humidity_data)
 
 
 @app.route('/')
