@@ -78,3 +78,4 @@ Dans le fichier HTML afficher les données de cette manière
 **4)	Proposer une solution permettant d’afficher cette historique sous forme de courbes.**
 
 
+https://puu.sh/FjxxG/460cc109ad.png
