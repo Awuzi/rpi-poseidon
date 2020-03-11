@@ -5,7 +5,7 @@
 
 Gestion des paramètres environnementaux (Température, Pression de l'air, Humidité) d'une salle serveur, avec interface et système de notification par email, ainsi que sauvegarde sur base de données distante via MQTT.
 
-
+<br>
 
 ## **Technologies utilisées**
 
