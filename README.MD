@@ -101,5 +101,3 @@ Le subscriber quant à lui va attendre une information ayant pour domaine/sujet 
 **4)	Proposer une solution permettant d’afficher cette historique sous forme de courbes.**
 
 Work in progress...
-
-https://puu.sh/FjxxG/460cc109ad.png
