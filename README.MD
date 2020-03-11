@@ -3,16 +3,11 @@
 
 > # **POSEIDON - RASPBERRY PI**
 
-
 Gestion des paramètres environnementaux (Température, Pression de l'air, Humidité) d'une salle serveur, avec interface et système de notification par email, ainsi que sauvegarde sur base de données distante via MQTT.
 
 
-<br>
 
-<hr>
-
-
-> ## **Technologies utilisées**
+## **Technologies utilisées**
 
 - Python 3
   - Flask
