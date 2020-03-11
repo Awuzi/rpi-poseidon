@@ -11,7 +11,7 @@ Gestion des paramètres environnementaux (Température, Pression de l'air, Humid
 
 - Python 3
   - Flask
-  - Paho-mqtt
+  - Paho-MQTT
   - Pygal
   - Logging.handlers
 - Sqlite 3
