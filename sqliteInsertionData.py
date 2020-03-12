@@ -17,21 +17,19 @@ def get_pression():
     pression = sense.get_pressure()
     return pression
 
-    # print("pression = " + str(pression))
-
 
 def get_humidity():
     sense = SenseHat()
     humidity = sense.get_humidity()
     return humidity
-    # print("humidite = " + str(humidity))
+
 
 
 def get_temp():
     sense = SenseHat()
     temp = sense.get_temperature()
     return temp
-    # print("temp = " + str(temp))
+  
 
 
 def sendMail(emailSubject, emailBody):
@@ -52,10 +50,10 @@ def main():
     emailSubjectTemperature = "Temperature is wrong"
     emailSubjectPressure = "Air pressure is too high!"
     emailSubjectHumidity = "Humidity is too high!"
+    db = "/home/pi/Poseidon/Poseidon.db"
 
     while True:
-        db = "/home/pi/Poseidon/Poseidon.db"
-        conn = create_connection(db)
+         +conn = create_connection(db)
 
         pression = get_pression()
         humidity = get_humidity()
