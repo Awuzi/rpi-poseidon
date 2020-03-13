@@ -2,6 +2,7 @@ from sense_emu import SenseHat
 import time
 import sqlite3
 import logging.handlers
+import paho.mqtt.client as mqtt
 from sqlite3 import Error
 
 
@@ -29,8 +30,19 @@ def get_temp():
     sense = SenseHat()
     temp = sense.get_temperature()
     return temp
-  
+ 
 
+def on_publish(client,userdata,result):
+    print("data publish")
+    pass
+
+def mqtt_sending_data(pression, humidity, temperature):
+    topic="poseidon"
+    payload=""+str(round(pression, 1))+"/"+str(round(humidity, 1))+"/"+str(round(temperature, 1))+""
+    client = mqtt.Client()
+    client.on_publish = on_publish
+    client.connect("192.168.1.42", 1883)
+    ret = client.publish(topic, payload)
 
 def sendMail(emailSubject, emailBody):
     error_mail_subject = emailSubject
@@ -53,11 +65,12 @@ def main():
     db = "/home/pi/Poseidon/Poseidon.db"
 
     while True:
-         +conn = create_connection(db)
-
+        conn = create_connection(db)
         pression = get_pression()
         humidity = get_humidity()
         temperature = get_temp()
+
+        mqtt_sending_data(pression, humidity, temperature)
 
         emailBodyGeneral = "Temperature is: " + str(round(temperature, 1)) + "°C (Optimum temperature between 15 and 25°C), Pressure is: " + str(
             round(pression, 1)) + "mbar (Optimum pressure is 1030mb), Humidity is: " + str(round(humidity, 1)) + "% (Best between 30-60%)."
