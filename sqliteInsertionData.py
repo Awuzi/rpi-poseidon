@@ -45,17 +45,20 @@ def mqtt_sending_data(pression, humidity, temperature):
     ret = client.publish(topic, payload)
 
 def sendMail(emailSubject, emailBody):
-    error_mail_subject = emailSubject
-    error_mail_handler = logging.handlers.SMTPHandler(mailhost=("smtp.gmail.com", 587),
+	filereading = open("adresseMailTech","r")
+	adressemail = filereading.read()
+	filereading.close()
+	error_mail_subject = emailSubject
+	error_mail_handler = logging.handlers.SMTPHandler(mailhost=("smtp.gmail.com", 587),
                                                       fromaddr="testmail.sio22@gmail.com",
-                                                      toaddrs="algerinooh@gmail.com",
+                                                      toaddrs=adressemail,
                                                       subject=error_mail_subject,
                                                       credentials=('testmail.sio22@gmail.com', 'testmail'),
                                                       secure=())
-    error_mail_handler.setLevel(logging.ERROR)
-    logger = logging.getLogger()
-    logger.addHandler(error_mail_handler)
-    logger.exception(Exception(emailBody))
+	error_mail_handler.setLevel(logging.ERROR)
+	logger = logging.getLogger()
+	logger.addHandler(error_mail_handler)
+	logger.exception(Exception(emailBody))
 
 
 def main():
@@ -70,7 +73,7 @@ def main():
         humidity = get_humidity()
         temperature = get_temp()
 
-        mqtt_sending_data(pression, humidity, temperature)
+        #mqtt_sending_data(pression, humidity, temperature)
 
         emailBodyGeneral = "Temperature is: " + str(round(temperature, 1)) + "°C (Optimum temperature between 15 and 25°C), Pressure is: " + str(
             round(pression, 1)) + "mbar (Optimum pressure is 1030mb), Humidity is: " + str(round(humidity, 1)) + "% (Best between 30-60%)."
