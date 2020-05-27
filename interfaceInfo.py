@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask import g
 from sense_emu import SenseHat
+from datetime import datetime, timedelta
 import time
 import sqlite3
 import pygal
@@ -25,11 +26,10 @@ def query_db(query, args=(), one=False):
                for idx, value in enumerate(row)) for row in cur.fetchall()]
     return (rv[0] if rv else None) if one else rv
 
-
 def get_datas_by_name(name):
     connection = connect_db()
     c = connection.cursor()
-    datas = query_db("select " + str(name) + " from data_poseidon ORDER BY ID DESC LIMIT 0, 20")
+    datas = query_db("select " + str(name) + " from data_poseidon ORDER BY ID DESC LIMIT 0, 48")
     tab = []
     i = 0
     for row in datas:

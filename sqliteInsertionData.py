@@ -84,18 +84,18 @@ def main():
         conn.close()
         print("sent to database")
 
-        # send email if temp is too high
+        #send email if temp is too high
         if temperature > 25 or temperature < 15:
             sendMail(emailSubjectTemperature, emailBodyGeneral)
             print("email sent")
         if pression < 1030:
             sendMail(emailSubjectPressure, emailBodyGeneral)
             print("email sent")
-        if humidity < 30 or humidity > 60:
+        if humidity < 60 or humidity > 30:
             sendMail(emailSubjectHumidity, emailBodyGeneral)
             print("email sent")
 
-        time.sleep(20)
+        time.sleep(900)
 
 
 if __name__ == '__main__':
